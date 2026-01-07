@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
-import { ref, type Ref } from 'vue'
+import { ref, type Ref, watch } from 'vue'
 import { getUserInfo as fetchUserInfo } from '@/utils/user'
+import { useThemeStore } from '@/stores/themeStore'
 export interface UserInfo {
   user_id: string
   user_name: string | null
@@ -13,6 +14,7 @@ export interface UserInfo {
   xmr_address: string | null
   sub_address: string[]
   email_opt_in: number
+  theme: string | null
 }
 interface UserInfoStore {
   userInfo: Ref<UserInfo | null>
@@ -35,6 +37,14 @@ export const useUserInfoStore = defineStore(
     const getUserInfo = () => {
       return userInfo.value
     }
+    watch(userInfo, (newUserInfo) => {
+      // 判断是否和当前主题一致
+      // 不一致就切换主题
+      const themeStore = useThemeStore()
+      if (newUserInfo?.theme && newUserInfo.theme !== themeStore.currentTheme) {
+        themeStore.switchTheme(newUserInfo.theme)
+      }
+    })
     const setToken = (newToken: string | null) => {
       token.value = newToken
     }

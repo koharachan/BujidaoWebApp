@@ -2,7 +2,8 @@ import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 import { defaultTheme } from '@/config/config'
-
+import { changeTheme } from '@/utils/user'
+import { useUserInfoStore } from '@/stores/userInfoStore'
 interface ThemeStore {
   currentTheme: Ref<string>
   themeRoutes: Ref<RouteRecordRaw[]>
@@ -119,9 +120,24 @@ export const useThemeStore = defineStore(
      * @param themeName 要切换到的主题名称
      */
     async function switchTheme(themeName: string) {
+      // 判断是否存在该主题
+      if (!availableThemes.value.includes(themeName)) {
+        return Promise.resolve()
+      }
+      // 判断是否和当前主题一致
+      if (themeName === currentTheme.value) {
+        return Promise.resolve()
+      }
       setTheme(themeName)
       themeRoutes.value = await loadThemeRoutes(themeName)
-
+      await changeTheme(themeName)
+      // 同步更新 userInfoStore 中的 theme，避免刷新后 watch 再次触发
+      const userInfoStore = useUserInfoStore()
+      const userInfo = userInfoStore.getUserInfo()
+      if (userInfo) {
+        userInfo.theme = themeName
+        userInfoStore.setUserInfo(userInfo)
+      }
       // 触发路由刷新
       window.location.reload()
     }

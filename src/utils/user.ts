@@ -121,6 +121,12 @@ interface changeEmailResponse extends jsonRpcResponse {
 function changeEmail(email: string): Promise<changeEmailResponse> {
   return jsonRpc('change_email', { email })
 }
+interface changeThemeResponse extends jsonRpcResponse {
+  result?: boolean
+}
+function changeTheme(theme: string): Promise<changeThemeResponse> {
+  return jsonRpc('change_theme', { theme })
+}
 
 interface getNodeListResponse extends jsonRpcResponse {
   result?: {
@@ -262,6 +268,7 @@ export {
   getGift,
   getUnmeasuredTraffic,
   changeEmail,
+  changeTheme,
   changePasswd,
   getNodeList,
   getCustomizedConfiguration,
