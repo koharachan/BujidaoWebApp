@@ -40,3 +40,6 @@ release.sh
 
 #temp files
 temp/
+
+# github config
+.gh_config
