@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
+import sharedRouter from './shared_router'
 export default [
   {
     path: '/',
@@ -16,36 +17,7 @@ export default [
         name: 'sub',
         component: () => import('@test/views/phone/SubView.vue'),
       },
-      {
-        path: '/signout',
-        name: 'signout',
-        component: () => import('@test/views/shared/SignOut.vue'),
-      },
-      {
-        path: '/google-oauth',
-        name: 'google_oauth',
-        component: () => import('@test/views/shared/GoogleOauth.vue'),
-      },
-      {
-        path: '/login',
-        name: 'login',
-        component: () => import('@test/views/shared/LoginView.vue'),
-      },
-      {
-        path: '/announcement',
-        name: 'Announcement',
-        component: () => import('@test/views/phone/AnnouncementView.vue'),
-      },
-      {
-        path: '/register',
-        name: 'register',
-        component: () => import('@test/views/shared/LoginView.vue'),
-      },
-      {
-        path: '/gateway/unsubscribe',
-        name: 'unsubscribe',
-        component: () => import('@test/views/shared/Unsubscribe.vue'),
-      },
+      ...sharedRouter,
     ],
   },
 ] as RouteRecordRaw[]
