@@ -68,7 +68,7 @@ function bind_telegram() {
       h('p', null, '请输入您的 TelegramID'),
       h('p', null, [
         '可联系 ',
-        h('a', { href: 'https://bujidao_bot.t.me', target: '_blank' }, '@test_Bot'),
+        h('a', { href: 'https://bujidao_bot.t.me', target: '_blank' }, '@Bujidao_Bot'),
         ' 获取',
       ]),
     ]),

@@ -13,6 +13,7 @@ import { ref } from 'vue'
 import { Lock, User } from '@element-plus/icons-vue'
 import GoogleOauth from '@bujidao/components/icons/GoogleOauth.vue'
 import TelegramImage from '@bujidao/components/icons/TelegramImage.vue'
+import TelegramWhite from '@bujidao/components/icons/TelegramWhite.vue'
 
 import { useDark, useToggle } from '@vueuse/core'
 import { useUserInfoStore } from '@/stores/userInfoStore'
@@ -54,9 +55,12 @@ function onTelegramAuth(user: any) {
     })
 }
 window.onTelegramAuth = onTelegramAuth
-function isEmail(email: string) {
-  let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-  return regex.test(email)
+const bot_id = import.meta.env.VITE_BOT_ID
+function telegramDirectAuth() {
+  const origin = window.location.origin
+  const authUrl = `https://oauth.telegram.org/auth?bot_id=${bot_id}&origin=${encodeURIComponent(origin)}&embed=1&return_to=${encodeURIComponent(origin)}/login`
+  // 弹出窗口或重定向
+  window.location.href = authUrl
 }
 
 const login_with_email_passwd = () => {
@@ -244,11 +248,12 @@ const go_chat = () => {
         <div class="c_g"></div>
       </div>
       <div>
-        <el-button type="primary" size="large" @click="google_login" round>
+        <el-button type="primary" size="large" @click="google_login" round class="login-button">
           <GoogleOauth />使用谷歌账号登录或注册
         </el-button>
       </div>
-      <div>
+      <!-- 只隐藏，需要保留以便于自动调用方法 -->
+      <div style="display: none">
         <component
           :is="'script'"
           async
@@ -258,6 +263,17 @@ const go_chat = () => {
           data-onauth="window.onTelegramAuth(user)"
         >
         </component>
+      </div>
+      <div>
+        <el-button
+          type="primary"
+          size="large"
+          @click="telegramDirectAuth"
+          round
+          class="login-button"
+        >
+          <TelegramWhite />使用 Telegram 登录或注册
+        </el-button>
       </div>
     </div>
   </div>
@@ -381,6 +397,15 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  :deep(> span) {
+    gap: 0.2em;
+
+    svg {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
 }
 
 .logo {
