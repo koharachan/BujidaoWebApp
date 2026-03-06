@@ -16,10 +16,18 @@ function go_to_user() {
   })
 }
 const g_token = ref()
+
+/** 从 OAuth 回调 URL 的 hash 中解析出 access_token */
+function getAccessTokenFromHash(): string | undefined {
+  const hash = router.currentRoute.value.hash
+  if (!hash) return undefined
+  const query = hash.slice(1) // 去掉开头的 #
+  const params = new URLSearchParams(query)
+  return params.get('access_token') ?? undefined
+}
+
 const init = () => {
-  g_token.value = router.currentRoute.value.hash
-    ? router.currentRoute.value.hash.split('#')[1]?.split('&')[0]?.split('=')[1]
-    : undefined
+  g_token.value = getAccessTokenFromHash()
   inviter.value = localStorage.getItem('inviter')
   loginWithGoogle(g_token.value, inviter.value)
     .then((res_data) => {
