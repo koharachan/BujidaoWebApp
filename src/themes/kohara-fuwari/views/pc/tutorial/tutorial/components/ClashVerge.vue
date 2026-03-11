@@ -33,15 +33,15 @@ const subCopy = () => {
       <div class="flex-row-wrap">
         <div>
           <p>3.1、打开软件后，点击订阅</p>
-          <img src="@test/assets/img/tutorial/windows/ClashVerge/add-sub-1.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/ClashVerge/add-sub-1.webp" />
         </div>
         <div>
           <p>3.2、将上面复制下来的URL，粘贴进，并点击导入</p>
-          <img src="@test/assets/img/tutorial/windows/ClashVerge/add-sub-2.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/ClashVerge/add-sub-2.webp" />
         </div>
         <div>
           <p>3.3、切换为岛岛的配置文件</p>
-          <img src="@test/assets/img/tutorial/windows/ClashVerge/select-bujidao.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/ClashVerge/select-bujidao.webp" />
         </div>
       </div>
     </li>
@@ -49,7 +49,7 @@ const subCopy = () => {
       <p>切换规则、全局</p>
       <div class="flex-row-wrap">
         <div>
-          <img src="@test/assets/img/tutorial/windows/ClashVerge/rule.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/ClashVerge/rule.webp" />
         </div>
       </div>
     </li>
@@ -57,7 +57,7 @@ const subCopy = () => {
       <p>开启代理或Tun（<b>记得查看感叹号的内容</b></p>
       <div class="flex-row-wrap">
         <div>
-          <img src="@test/assets/img/tutorial/windows/ClashVerge/proxy-tun.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/ClashVerge/proxy-tun.webp" />
         </div>
       </div>
     </li>

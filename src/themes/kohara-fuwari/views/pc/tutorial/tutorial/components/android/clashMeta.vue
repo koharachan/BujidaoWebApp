@@ -35,23 +35,23 @@ const subCopy = () => {
       <div class="flex-row-wrap">
         <div>
           <p>3.1、打开软件，点击配置文件</p>
-          <img src="@test/assets/img/tutorial/andriod/clash/Profile.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/andriod/clash/Profile.webp" />
         </div>
         <div>
           <p>3.2、点击右上角加号添加</p>
-          <img src="@test/assets/img/tutorial/andriod/clash/AddSub.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/andriod/clash/AddSub.webp" />
         </div>
         <div>
           <p>3.3、选择从URL导入</p>
-          <img src="@test/assets/img/tutorial/andriod/clash/UseUrl.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/andriod/clash/UseUrl.webp" />
         </div>
         <div>
           <p>3.4、填写相关内容并点击右上角保存</p>
-          <img src="@test/assets/img/tutorial/andriod/clash/SaveProfile.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/andriod/clash/SaveProfile.webp" />
         </div>
         <div>
           <p>3.5、选择刚添加好的配置</p>
-          <img src="@test/assets/img/tutorial/andriod/clash/ChooseProfile.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/andriod/clash/ChooseProfile.webp" />
         </div>
       </div>
     </li>
@@ -60,15 +60,15 @@ const subCopy = () => {
       <div class="flex-row-wrap">
         <div>
           <p>4.1、点击进行连接</p>
-          <img src="@test/assets/img/tutorial/andriod/clash/Start.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/andriod/clash/Start.webp" />
         </div>
         <div>
           <p>4.2、查看分流规则</p>
-          <img src="@test/assets/img/tutorial/andriod/clash/RuleMode.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/andriod/clash/RuleMode.webp" />
         </div>
         <div>
           <p>4.3、选择节点</p>
-          <img src="@test/assets/img/tutorial/andriod/clash/ProxyChoose.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/andriod/clash/ProxyChoose.webp" />
         </div>
       </div>
     </li>

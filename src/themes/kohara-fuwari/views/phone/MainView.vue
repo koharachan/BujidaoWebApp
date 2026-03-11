@@ -2,11 +2,11 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-import TelegramImage from '@test/components/icons/TelegramImage.vue'
-import UserFilled from '@test/components/icons/UserFilled.vue'
-import SubscribeItem from '@test/components/icons/SubscribeItem.vue'
-import ListItem from '@test/components/icons/ListItem.vue'
-import DarkTheme from '@test/components/DarkTheme.vue'
+import TelegramImage from '@kohara-fuwari/components/icons/TelegramImage.vue'
+import UserFilled from '@kohara-fuwari/components/icons/UserFilled.vue'
+import SubscribeItem from '@kohara-fuwari/components/icons/SubscribeItem.vue'
+import ListItem from '@kohara-fuwari/components/icons/ListItem.vue'
+import DarkTheme from '@kohara-fuwari/components/DarkTheme.vue'
 import { ElMessage } from 'element-plus'
 const menu = [
   {

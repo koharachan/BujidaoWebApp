@@ -27,11 +27,11 @@ const subCopy = () => {
               >Github</span
             >官网下载后解压
           </p>
-          <img src="@test/assets/img/tutorial/windows/v2rayN/v2rayn.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/v2rayN/v2rayn.webp" />
         </div>
         <div>
           <p>1.2、解压或者安装后，打开软件，桌面状态栏会看到小图标，双击它，就能看到软件界面了</p>
-          <img src="@test/assets/img/tutorial/windows/v2rayN/icon.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/v2rayN/icon.webp" />
         </div>
       </div>
     </li>
@@ -43,15 +43,15 @@ const subCopy = () => {
       <div class="flex-row-wrap">
         <div>
           <p>3.1、点击如图所示的加号</p>
-          <img src="@test/assets/img/tutorial/windows/v2rayN/add-sub.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/v2rayN/add-sub.webp" />
         </div>
         <div>
           <p>3.2、按图输入订阅地址及备注，点击确定</p>
-          <img src="@test/assets/img/tutorial/windows/v2rayN/add-sub-2.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/v2rayN/add-sub-2.webp" />
         </div>
         <div>
           <p>3.3、更新订阅</p>
-          <img src="@test/assets/img/tutorial/windows/v2rayN/add-sub-3.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/v2rayN/add-sub-3.webp" />
         </div>
       </div>
     </li>
@@ -60,15 +60,15 @@ const subCopy = () => {
       <div class="flex-row-wrap">
         <div>
           <p>4.1、右键打开菜单选择，或者点击节点后按下回车键</p>
-          <img src="@test/assets/img/tutorial/windows/v2rayN/choose.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/v2rayN/choose.webp" />
         </div>
         <div>
           <p>4.2、这里可以选择路由模式</p>
-          <img src="@test/assets/img/tutorial/windows/v2rayN/route.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/v2rayN/route.webp" />
         </div>
         <div>
           <p>4.3、Tun模式和系统代理（Tun模式需要右键管理员运行</p>
-          <img src="@test/assets/img/tutorial/windows/v2rayN/tun.webp" />
+          <img src="@kohara-fuwari/assets/img/tutorial/windows/v2rayN/tun.webp" />
         </div>
       </div>
     </li>

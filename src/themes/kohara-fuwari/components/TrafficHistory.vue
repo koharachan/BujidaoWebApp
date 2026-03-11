@@ -5,7 +5,7 @@ import { watch, onMounted, onUnmounted, ref, computed, nextTick } from 'vue'
 import { useDark } from '@vueuse/core'
 const isDark = useDark()
 // 当前宽度
-import { useScreenStore } from '@test/stores/screenStore'
+import { useScreenStore } from '@kohara-fuwari/stores/screenStore'
 const screenStore = useScreenStore()
 const width = computed(() => screenStore.width)
 //
@@ -25,7 +25,7 @@ const daily_traffic = computed(() => {
   }
 
   // 使用 Map 存储每日数据，键为日期字符串，值为 { usage, balance }
-  const dailyMap = new Map<string, { usage: number; balance: number }>()
+  const dailyMap = new Map<string, { usage: number; balance: number, update_time: number }>()
 
   // 一次性遍历所有数据，同时计算每日用量和余额
   const sortedHistory = [...traffic_history.value].sort(
@@ -36,23 +36,25 @@ const daily_traffic = computed(() => {
     const dateStr = new Date(item.update_time / 1000).toLocaleDateString().split(' ')[0] || ''
 
     if (!dailyMap.has(dateStr)) {
-      dailyMap.set(dateStr, { usage: 0, balance: 0 })
+      dailyMap.set(dateStr, { usage: 0, balance: 0, update_time: item.update_time })
     }
 
     const dailyData = dailyMap.get(dateStr)!
     dailyData.usage += item.usage
     // 余额取该日期最后一条记录的余额
     dailyData.balance = item.balance
+    dailyData.update_time = item.update_time
   }
 
   // 转换为数组并排序
   return Array.from(dailyMap.entries())
-    .sort(([a], [b]) => a.localeCompare(b))
     .map(([time, data]) => ({
       time,
       usage: data.usage / 100,
       balance: data.balance / 100,
+      update_time: data.update_time,
     }))
+    .sort((a, b) => a.update_time - b.update_time)
 })
 
 const hourly_traffic = computed(() => {
@@ -61,7 +63,7 @@ const hourly_traffic = computed(() => {
   }
 
   // 使用 Map 存储每小时数据，键为日期时间字符串（YYYY-MM-DD HH:00），值为 { usage, balance }
-  const hourlyMap = new Map<string, { usage: number; balance: number }>()
+  const hourlyMap = new Map<string, { usage: number; balance: number, update_time: number }>()
 
   // 一次性遍历所有数据，同时计算每小时用量和余额
   const sortedHistory = [...traffic_history.value].sort(
@@ -73,23 +75,25 @@ const hourly_traffic = computed(() => {
     const hourStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:00`
 
     if (!hourlyMap.has(hourStr)) {
-      hourlyMap.set(hourStr, { usage: 0, balance: 0 })
+      hourlyMap.set(hourStr, { usage: 0, balance: 0, update_time: item.update_time })
     }
 
     const hourlyData = hourlyMap.get(hourStr)!
     hourlyData.usage += item.usage
     // 余额取该小时最后一条记录的余额
     hourlyData.balance = item.balance
+    hourlyData.update_time = item.update_time
   }
 
   // 转换为数组并排序
   return Array.from(hourlyMap.entries())
-    .sort(([a], [b]) => a.localeCompare(b))
     .map(([time, data]) => ({
       time,
       usage: data.usage / 100,
       balance: data.balance / 100,
+      update_time: data.update_time,
     }))
+    .sort((a, b) => a.update_time - b.update_time)
 })
 
 const time = computed(() => {

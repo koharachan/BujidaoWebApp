@@ -3,14 +3,14 @@ import MainView from './MainView.vue'
 import { onMounted, onUnmounted, computed, ref, h, watch } from 'vue'
 import { cancel, updateEmailOptIn } from '@/utils/user'
 import { touchCopy } from '@/utils/copy'
-import AddCredit from '@test/components/AddCredit.vue'
+import AddCredit from '@kohara-fuwari/components/AddCredit.vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { changeEmail, changePasswd, bindTelegram, getInvitedCount } from '@/utils/user'
 import { WarningFilled } from '@element-plus/icons-vue'
 import { useAnnouncementStore } from '@/stores/announcementStore'
 
 // 当前宽度
-import { useScreenStore } from '@test/stores/screenStore'
+import { useScreenStore } from '@kohara-fuwari/stores/screenStore'
 const screenStore = useScreenStore()
 const width = computed(() => screenStore.width)
 //
@@ -167,7 +167,7 @@ function change_pass() {
 // 创建邀请链接
 import { getInviteLink, createInviteLink } from '@/utils/user'
 import { getUnmeasuredTraffic, pointsToBalance, rebateToBalance } from '@/utils/user'
-import TrafficHistory from '@test/components/TrafficHistory.vue'
+import TrafficHistory from '@kohara-fuwari/components/TrafficHistory.vue'
 const invite_links = ref()
 function create_invite_link() {
   createInviteLink()

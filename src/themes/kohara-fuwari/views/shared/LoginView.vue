@@ -11,9 +11,9 @@ const router = useRouter()
 import { markRaw } from 'vue'
 import { ref } from 'vue'
 import { Lock, User } from '@element-plus/icons-vue'
-import GoogleOauth from '@test/components/icons/GoogleOauth.vue'
-import TelegramImage from '@test/components/icons/TelegramImage.vue'
-import TelegramWhite from '@test/components/icons/TelegramWhite.vue'
+import GoogleOauth from '@kohara-fuwari/components/icons/GoogleOauth.vue'
+import TelegramImage from '@kohara-fuwari/components/icons/TelegramImage.vue'
+import TelegramWhite from '@kohara-fuwari/components/icons/TelegramWhite.vue'
 
 import { useDark, useToggle } from '@vueuse/core'
 
@@ -32,7 +32,7 @@ import {
 // 添加图标到库
 library.add(faShieldAlt, faBolt, faUserCheck, faEnvelope, faKey, faSpinner)
 import { useUserInfoStore } from '@/stores/userInfoStore'
-import DarkTheme from '@test/components/DarkTheme.vue'
+import DarkTheme from '@kohara-fuwari/components/DarkTheme.vue'
 const isDark = useDark()
 const userInfoStore = useUserInfoStore()
 

@@ -2,13 +2,13 @@
 import { onMounted, onUnmounted, computed, ref, h, watch } from 'vue'
 import { getGift, cancel, updateEmailOptIn } from '@/utils/user'
 import { touchCopy } from '@/utils/copy'
-import AddCredit from '@test/components/AddCredit.vue'
+import AddCredit from '@kohara-fuwari/components/AddCredit.vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { changeEmail, changePasswd, bindTelegram } from '@/utils/user'
 import { WarningFilled } from '@element-plus/icons-vue'
 import { useUserInfoStore } from '@/stores/userInfoStore'
 import UserMainView from './UserMainView.vue'
-import { useScreenStore } from '@test/stores/screenStore'
+import { useScreenStore } from '@kohara-fuwari/stores/screenStore'
 import { useAnnouncementStore } from '@/stores/announcementStore'
 
 const userInfoStore = useUserInfoStore()

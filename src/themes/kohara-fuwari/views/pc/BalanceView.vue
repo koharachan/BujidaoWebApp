@@ -7,12 +7,12 @@ import { ElMessage } from 'element-plus'
 
 // Components
 import UserMainView from './UserMainView.vue'
-import AddCredit from '@test/components/AddCredit.vue'
-import TrafficHistory from '@test/components/TrafficHistory.vue'
+import AddCredit from '@kohara-fuwari/components/AddCredit.vue'
+import TrafficHistory from '@kohara-fuwari/components/TrafficHistory.vue'
 
 // Stores
 import { useUserInfoStore } from '@/stores/userInfoStore'
-import { useScreenStore } from '@test/stores/screenStore'
+import { useScreenStore } from '@kohara-fuwari/stores/screenStore'
 
 // Utils
 import {
