@@ -17,6 +17,11 @@ export default [
         name: 'sub',
         component: () => import('@bujidao/views/phone/SubView.vue'),
       },
+      {
+        path: '/announcement',
+        name: 'Announcement',
+        component: () => import('@bujidao/views/phone/AnnouncementView.vue'),
+      },
       ...sharedRouter,
     ],
   },

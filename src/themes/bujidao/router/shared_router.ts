@@ -15,11 +15,6 @@ export default [
     component: () => import('@bujidao/views/shared/login/LoginView.vue'),
   },
   {
-    path: '/announcement',
-    name: 'Announcement',
-    component: () => import('@bujidao/views/pc/AnnouncementView.vue'),
-  },
-  {
     path: '/register',
     name: 'register',
     component: () => import('@bujidao/views/shared/login/LoginView.vue'),
