@@ -42,6 +42,11 @@ export default [
         name: 'balance',
         component: () => import('@bujidao/views/pc/BalanceView.vue'),
       },
+      {
+        path: '/announcement',
+        name: 'Announcement',
+        component: () => import('@bujidao/views/pc/AnnouncementView.vue'),
+      },
       ...sharedRouter,
     ],
   },
