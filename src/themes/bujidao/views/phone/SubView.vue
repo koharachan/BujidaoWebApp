@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { changeUuid, changeSubKey, changeWireguardPriKey } from '@/utils/user'
 import { touchCopy } from '@/utils/copy'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { useUserInfoStore } from '@/stores/userInfoStore'
 import MainView from './MainView.vue'
 
@@ -17,34 +17,73 @@ const btoa = (str: string) => {
   return window.btoa(str)
 }
 function change_uuid() {
-  changeUuid().then((res: any) => {
-    if (res.error) {
-      ElMessage.error(res.error)
-    } else {
-      ElMessage.success('更换成功')
-      init()
-    }
-  })
+  ElMessageBox.confirm(
+    '订阅地址不会更换，重置后所有使用订阅地址的客户端都需要更新订阅才能使用。确定继续吗？',
+    '确认重置代理密码',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    },
+  )
+    .then(() => {
+      return changeUuid()
+    })
+    .then((res: any) => {
+      if (res.error) {
+        ElMessage.error(res.error)
+      } else {
+        ElMessage.success('更换成功')
+        init()
+      }
+    })
+    .catch(() => {})
 }
 function change_sub_key() {
-  changeSubKey().then((res: any) => {
-    if (res.error) {
-      ElMessage.error(res.error)
-    } else {
-      ElMessage.success('更换成功')
-      init()
-    }
-  })
+  ElMessageBox.confirm(
+    '订阅地址会被更换，重置后所有使用订阅地址的地方都要进行替换。确定继续吗？',
+    '确认更换订阅地址',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    },
+  )
+    .then(() => {
+      return changeSubKey()
+    })
+    .then((res: any) => {
+      if (res.error) {
+        ElMessage.error(res.error)
+      } else {
+        ElMessage.success('更换成功')
+        init()
+      }
+    })
+    .catch(() => {})
 }
 function change_wireguard_pri_key() {
-  changeWireguardPriKey().then((res: any) => {
-    if (res.error) {
-      ElMessage.error(res.error)
-    } else {
-      ElMessage.success('更换成功')
-      init()
-    }
-  })
+  ElMessageBox.confirm(
+    'Wireguard 专属密钥将被重置，需在客户端更新配置文件的私钥，或重新复制配置文件。确定继续吗？',
+    '确认重置 Wireguard 密钥',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    },
+  )
+    .then(() => {
+      return changeWireguardPriKey()
+    })
+    .then((res: any) => {
+      if (res.error) {
+        ElMessage.error(res.error)
+      } else {
+        ElMessage.success('更换成功')
+        init()
+      }
+    })
+    .catch(() => {})
 }
 </script>
 
