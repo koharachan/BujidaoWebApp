@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 import { ref } from 'vue'
 import GoogleOauth from '@bujidao/components/icons/GoogleOauth.vue'
+import TelegramWebAppLogin from './components/TelegramWebAppLogin.vue'
 import TelegramImage from '@bujidao/components/icons/TelegramImage.vue'
 import TelegramWhite from '@bujidao/components/icons/TelegramWhite.vue'
 
@@ -103,6 +104,7 @@ const go_chat = () => {
 </script>
 
 <template>
+  <TelegramWebAppLogin />
   <div class="login-main">
     <div class="login-card">
       <img src="/favicon.ico" alt="logo" class="logo" />

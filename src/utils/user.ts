@@ -24,6 +24,16 @@ function loginWithTelegram(
   }
   return jsonRpc('login_with_telegram', params)
 }
+function loginWithTelegramWebApp(
+  init_data: string,
+  inviter: string | null = null,
+): Promise<loginWithTelegramResponse> {
+  const params: Record<string, any> = { init_data }
+  if (inviter) {
+    params.inviter = inviter
+  }
+  return jsonRpc('login_with_telegram_web_app', params)
+}
 function loginWithGoogle(
   google_oauth_token: any,
   inviter: string | null = null,
