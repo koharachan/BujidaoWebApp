@@ -7,7 +7,7 @@ import AddCredit from '@bujidao/components/AddCredit.vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { changeEmail, changePasswd, bindTelegram, getInvitedCount } from '@/utils/user'
 import { useAnnouncementStore } from '@/stores/announcementStore'
-
+import { closeTelegramWebApp } from '@/utils/telegram'
 // 当前宽度
 import { useScreenStore } from '@bujidao/stores/screenStore'
 const screenStore = useScreenStore()
@@ -56,7 +56,7 @@ function cancelAccount() {
     if (res.result == true) {
       ElMessage.success('注销成功')
       // 关闭当前窗口
-      window.close()
+      closeTelegramWebApp()
     } else {
       ElMessage.error('注销失败，请联系管理员')
     }

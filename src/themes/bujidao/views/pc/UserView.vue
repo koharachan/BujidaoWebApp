@@ -9,6 +9,7 @@ import { useUserInfoStore } from '@/stores/userInfoStore'
 import UserMainView from './UserMainView.vue'
 import { useScreenStore } from '@bujidao/stores/screenStore'
 import { useAnnouncementStore } from '@/stores/announcementStore'
+import { closeTelegramWebApp } from '@/utils/telegram'
 
 const userInfoStore = useUserInfoStore()
 userInfoStore.updateUserInfo()
@@ -55,7 +56,7 @@ function cancelAccount() {
     if (res.result == true) {
       ElMessage.success('注销成功')
       // 关闭当前窗口
-      window.close()
+      closeTelegramWebApp()
     } else {
       ElMessage.error('注销失败，请联系管理员')
     }

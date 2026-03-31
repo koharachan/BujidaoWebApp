@@ -3,4 +3,7 @@ function getTelegramInitData() {
   const initData = window.Telegram?.WebApp?.initData
   return initData
 }
-export { getTelegramInitData }
+function closeTelegramWebApp() {
+  window.Telegram.WebApp.close()
+}
+export { getTelegramInitData, closeTelegramWebApp }
