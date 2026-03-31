@@ -55,7 +55,8 @@ function cancelAccount() {
   cancel().then((res: any) => {
     if (res.result == true) {
       ElMessage.success('注销成功')
-      location.href = '/signout'
+      // 关闭当前窗口
+      window.close()
     } else {
       ElMessage.error('注销失败，请联系管理员')
     }
