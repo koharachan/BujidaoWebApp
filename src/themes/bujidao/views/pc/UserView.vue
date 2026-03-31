@@ -216,16 +216,6 @@ init()
               <b> 余额： </b> {{ user_info.balance / 100 }}
               <el-button type="primary" @click="showCredit()" round>充值</el-button>
             </p>
-            <p>
-              <b> 剩余可用：</b>
-              至多
-              <b>
-                <span :style="{ color: 'aquamarine' }">
-                  {{ user_info.balance + 1000 }}
-                </span>
-                G
-              </b>
-            </p>
             <p v-if="user_info.balance < 1000" style="color: burlywood">充钱可以变强哟～</p>
           </div>
         </div>
