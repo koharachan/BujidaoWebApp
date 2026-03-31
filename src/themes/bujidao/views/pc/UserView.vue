@@ -5,7 +5,6 @@ import { touchCopy } from '@/utils/copy'
 import AddCredit from '@bujidao/components/AddCredit.vue'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { changeEmail, changePasswd, bindTelegram } from '@/utils/user'
-import { WarningFilled } from '@element-plus/icons-vue'
 import { useUserInfoStore } from '@/stores/userInfoStore'
 import UserMainView from './UserMainView.vue'
 import { useScreenStore } from '@bujidao/stores/screenStore'
@@ -60,6 +59,21 @@ function cancelAccount() {
       ElMessage.error('注销失败，请联系管理员')
     }
   })
+}
+function confirmCancelAccount() {
+  ElMessageBox.confirm(
+    '确认要被消灭么？彻彻底底，完完全全清除一切存在于岛的痕迹？',
+    '确认销户',
+    {
+      confirmButtonText: '是的！',
+      cancelButtonText: '取消',
+      type: 'warning',
+    },
+  )
+    .then(() => {
+      cancelAccount()
+    })
+    .catch(() => {})
 }
 function bind_telegram() {
   ElMessageBox.prompt(
@@ -243,19 +257,7 @@ init()
             </p>
             <span class="no-wrap">
               <el-button type="primary" @click="change_pass()" round>更改密码</el-button>
-              <el-popconfirm
-                cancel-button-text="取消"
-                confirm-button-text="是的！"
-                :icon="WarningFilled"
-                icon-color="#ff0000"
-                title="确认要被消灭么？彻彻底底，完完全全清除一切存在于岛的痕迹？"
-                @cancel="console.log('')"
-                @confirm="cancelAccount"
-              >
-                <template #reference>
-                  <el-button type="primary" round>消灭我🔥</el-button>
-                </template>
-              </el-popconfirm>
+              <el-button type="primary" round @click="confirmCancelAccount">消灭我🔥</el-button>
             </span>
           </div>
         </div>
