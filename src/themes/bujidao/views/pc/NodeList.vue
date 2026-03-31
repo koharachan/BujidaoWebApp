@@ -180,15 +180,15 @@ function show_connect_info(node_id: string) {
   <UserMainView>
     <div class="node-list">
       <!-- <h2>用户可使用节点等级小于自身余额的节点</h2> -->
-      <el-table
-        :data="node_list"
-        height="100%"
-        stripe
-        table-layout="auto"
-        :default-sort="{ prop: 'level', order: 'descending' }"
-      >
+      <el-table :data="node_list" height="100%" stripe table-layout="auto"
+        :default-sort="{ prop: 'level', order: 'descending' }">
         <el-table-column prop="name" label="节点名称" sortable show-overflow-tooltip />
         <el-table-column prop="node_type" label="节点类型" sortable />
+        <el-table-column prop="level" label="节点价格" sortable>
+          <template #default="scope">
+            {{ (scope.row.price / 100).toFixed(2) }}元/G
+          </template>
+        </el-table-column>
         <el-table-column prop="level" label="节点等级" sortable>
           <template #default="scope">
             {{ scope.row.level / 100 }}
@@ -220,14 +220,8 @@ function show_connect_info(node_id: string) {
           <el-tooltip content="点我导入" placement="top">
             <a :href="node_qr_code" target="_blank">
               <div class="qr">
-                <vue-qr
-                  :text="node_qr_code"
-                  :size="2400"
-                  :margin="50"
-                  :correctLevel="1"
-                  :auto-color="true"
-                  id="qrcode"
-                ></vue-qr>
+                <vue-qr :text="node_qr_code" :size="2400" :margin="50" :correctLevel="1" :auto-color="true"
+                  id="qrcode"></vue-qr>
               </div>
             </a>
           </el-tooltip>
@@ -238,7 +232,7 @@ function show_connect_info(node_id: string) {
 </template>
 
 <style lang="scss" scoped>
-.qr > img {
+.qr>img {
   width: 80%;
   height: 80%;
 }
