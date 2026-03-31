@@ -4,6 +4,7 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import AutoImport from 'unplugin-auto-import/vite'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -11,7 +12,15 @@ export default defineConfig(({ mode }) => {
   const apiAddress = env.VITE_API_ADDRESS
 
   return {
-    plugins: [vue(), vueJsx(), vueDevTools()],
+    plugins: [
+      AutoImport({
+        imports: ['vue', 'vue-router', 'pinia'],
+        dts: true,
+      }),
+      vue(),
+      vueJsx(),
+      vueDevTools(),
+    ],
     resolve: {
       // 可以在这里定义别名，方便在代码中使用
       alias: {
