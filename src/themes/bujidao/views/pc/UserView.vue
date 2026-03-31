@@ -210,18 +210,13 @@ init()
     <div class="box" v-if="user_info">
       <div class="user-main">
         <div>
-          <h2>余额</h2>
+          <h2>账户</h2>
           <div>
             <p>
               <b> 余额： </b> {{ user_info.balance / 100 }}
               <el-button type="primary" @click="showCredit()" round>充值</el-button>
             </p>
             <p v-if="user_info.balance < 1000" style="color: burlywood">充钱可以变强哟～</p>
-          </div>
-        </div>
-        <div>
-          <h2>账户</h2>
-          <div>
             <p>
               <b> 邮件地址： </b>{{ user_info.email ? user_info.email : '未设置' }}
               <el-button v-if="user_info.email" type="primary" @click="change_email()" round
