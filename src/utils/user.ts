@@ -275,6 +275,7 @@ export {
   getPaymentMethod,
   loginWithEmail,
   loginWithTelegram,
+  loginWithTelegramWebApp,
   loginWithGoogle,
   loginWithEmailPasswd,
   getUserInfo,
