@@ -61,15 +61,11 @@ function cancelAccount() {
   })
 }
 function confirmCancelAccount() {
-  ElMessageBox.confirm(
-    '确认要被消灭么？彻彻底底，完完全全清除一切存在于岛的痕迹？',
-    '确认销户',
-    {
-      confirmButtonText: '是的！',
-      cancelButtonText: '取消',
-      type: 'warning',
-    },
-  )
+  ElMessageBox.confirm('确认要被消灭么？彻彻底底，完完全全清除一切存在于岛的痕迹？', '确认销户', {
+    confirmButtonText: '是的！',
+    cancelButtonText: '取消',
+    type: 'warning',
+  })
     .then(() => {
       cancelAccount()
     })

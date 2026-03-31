@@ -25,7 +25,7 @@ const daily_traffic = computed(() => {
   }
 
   // 使用 Map 存储每日数据，键为日期字符串，值为 { usage, balance }
-  const dailyMap = new Map<string, { usage: number; balance: number, update_time: number }>()
+  const dailyMap = new Map<string, { usage: number; balance: number; update_time: number }>()
 
   // 一次性遍历所有数据，同时计算每日用量和余额
   const sortedHistory = [...traffic_history.value].sort(
@@ -63,7 +63,7 @@ const hourly_traffic = computed(() => {
   }
 
   // 使用 Map 存储每小时数据，键为日期时间字符串（YYYY-MM-DD HH:00），值为 { usage, balance }
-  const hourlyMap = new Map<string, { usage: number; balance: number, update_time: number }>()
+  const hourlyMap = new Map<string, { usage: number; balance: number; update_time: number }>()
 
   // 一次性遍历所有数据，同时计算每小时用量和余额
   const sortedHistory = [...traffic_history.value].sort(
