@@ -18,7 +18,6 @@ import { useScreenStore } from '@bujidao/stores/screenStore'
 import {
   getInviteLink,
   createInviteLink,
-  getUnmeasuredTraffic,
   pointsToBalance,
   rebateToBalance,
   getInvitedCount,
@@ -93,11 +92,6 @@ function init() {
 onMounted(() => {
   init()
 
-  // 获取未计入流量
-  getUnmeasuredTraffic().then((res: any) => {
-    um_traffic.value = res.result
-  })
-
   // 获取邀请链接
   getInviteLink().then((res: any) => {
     invite_links.value = res.result
@@ -117,14 +111,7 @@ onMounted(() => {
         <p>
           余额：{{ user_info.balance / 100 }}
           <el-button type="primary" @click="showCredit()" round>充值</el-button>
-        </p>
-
-        <p>
-          未计入流量：{{
-            um_traffic ? (um_traffic / 100 / 1024 / 1024).toFixed(3) : (0).toFixed(3)
-          }}
-          MiB
-          <el-button type="primary" size="small" @click="showTrafficHistory()" round>
+          <el-button type="primary" @click="showTrafficHistory()" round>
             流量记录
           </el-button>
         </p>
@@ -161,15 +148,8 @@ onMounted(() => {
           <AddCredit v-if="show_add_credit" />
         </el-dialog>
 
-        <el-dialog
-          v-model="show_traffic_history"
-          center
-          :width="width < 800 ? '200%' : '90%'"
-          style="height: 80vh"
-          destroy-on-close
-          align-center
-          class="th"
-        >
+        <el-dialog v-model="show_traffic_history" center :width="width < 800 ? '200%' : '90%'" style="height: 80vh"
+          destroy-on-close align-center class="th">
           <TrafficHistory />
         </el-dialog>
       </div>
