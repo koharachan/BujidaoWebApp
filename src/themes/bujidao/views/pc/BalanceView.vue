@@ -111,9 +111,7 @@ onMounted(() => {
         <p>
           余额：{{ user_info.balance / 100 }}
           <el-button type="primary" @click="showCredit()" round>充值</el-button>
-          <el-button type="primary" @click="showTrafficHistory()" round>
-            流量记录
-          </el-button>
+          <el-button type="primary" @click="showTrafficHistory()" round> 流量记录 </el-button>
         </p>
 
         <p>
@@ -148,8 +146,15 @@ onMounted(() => {
           <AddCredit v-if="show_add_credit" />
         </el-dialog>
 
-        <el-dialog v-model="show_traffic_history" center :width="width < 800 ? '200%' : '90%'" style="height: 80vh"
-          destroy-on-close align-center class="th">
+        <el-dialog
+          v-model="show_traffic_history"
+          center
+          :width="width < 800 ? '200%' : '90%'"
+          style="height: 80vh"
+          destroy-on-close
+          align-center
+          class="th"
+        >
           <TrafficHistory />
         </el-dialog>
       </div>

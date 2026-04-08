@@ -9,7 +9,7 @@ const userInfoStore = useUserInfoStore()
 userInfoStore.clearUserInfo()
 ElMessage.success('已退出登录')
 setTimeout(() => {
-closeTelegramWebApp()
+  closeTelegramWebApp()
 }, 233)
 setTimeout(() => {
   router.push({

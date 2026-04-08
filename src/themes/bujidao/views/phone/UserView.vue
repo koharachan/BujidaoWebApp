@@ -71,7 +71,7 @@ function confirmCancelAccount() {
     .then(() => {
       cancelAccount()
     })
-    .catch(() => { })
+    .catch(() => {})
 }
 function bind_telegram() {
   ElMessageBox.prompt(
@@ -264,16 +264,25 @@ watch(
         <div>
           <p>
             <b> 邮件地址： </b>{{ user_info.email ? user_info.email : '未设置' }}
-            <el-button v-if="user_info.email" type="primary" @click="change_email()" round>更换</el-button>
+            <el-button v-if="user_info.email" type="primary" @click="change_email()" round
+              >更换</el-button
+            >
             <el-button v-else type="primary" @click="change_email()" round>绑定</el-button>
           </p>
           <p v-if="user_info.email">
-            <b>订阅营销邮件</b><el-switch v-model="email_opt_in" active-color="#13ce66" inactive-color="#ff4949"
-              @change="change_email_opt_in"></el-switch>
+            <b>订阅营销邮件</b
+            ><el-switch
+              v-model="email_opt_in"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              @change="change_email_opt_in"
+            ></el-switch>
           </p>
           <p>
             <b> Telegram： </b>{{ user_info.telegram_id ? user_info.telegram_id : '未设置' }}
-            <el-button v-if="user_info.telegram_id" type="primary" @click="bind_telegram()" round>更换</el-button>
+            <el-button v-if="user_info.telegram_id" type="primary" @click="bind_telegram()" round
+              >更换</el-button
+            >
             <el-button v-else type="primary" @click="bind_telegram()" round>绑定</el-button>
           </p>
           <span class="no-wrap">
@@ -288,9 +297,7 @@ watch(
           <p>
             <b> 余额： </b> {{ user_info.balance / 100 }}
             <el-button type="primary" @click="showCredit()" round>充值</el-button>
-            <el-button type="primary" @click="showTrafficHistory()" round>
-              流量记录
-            </el-button>
+            <el-button type="primary" @click="showTrafficHistory()" round> 流量记录 </el-button>
           </p>
           <p v-if="user_info.balance < 1000" style="color: burlywood">充钱可以变强哟～</p>
           <p>
@@ -334,15 +341,23 @@ watch(
     <el-dialog v-model="show_announcement_pin" center :width="width < 800 ? '80%' : '50%'">
       <div v-html="announcement_pin"></div>
     </el-dialog>
-    <el-dialog v-model="show_traffic_history" center :width="width < 800 ? '200%' : '90%'" style="height: 80vh"
-      destroy-on-close align-center class="th">
+    <el-dialog
+      v-model="show_traffic_history"
+      center
+      :width="width < 800 ? '200%' : '90%'"
+      style="height: 80vh"
+      destroy-on-close
+      align-center
+      class="th"
+    >
       <TrafficHistory />
     </el-dialog>
     <el-dialog v-model="email_opt_in_not_set" center :width="width < 800 ? '80%' : '50%'">
       <div>
         <p>还未设置是否订阅邮件，建议订阅或关注频道以获得最新优惠资讯</p>
         <p>
-          强烈建议开启，以避免失联，将来有可能的<span style="color: tomato">域名变更</span>也会由此发送
+          强烈建议开启，以避免失联，将来有可能的<span style="color: tomato">域名变更</span
+          >也会由此发送
         </p>
         <p>
           订阅邮件只会在有新公告或优惠时发送，<span style="color: chocolate">不会频繁打扰</span>
@@ -350,8 +365,13 @@ watch(
         <p>退订链接会随资讯邮件一并发送，点击即可退订</p>
         <p>如此求生欲满满了，订阅一下叭，呜呜～</p>
         <p>
-          <b>订阅营销邮件</b><el-switch v-model="email_opt_in" active-color="#13ce66" inactive-color="#ff4949"
-            @change="change_email_opt_in"></el-switch>
+          <b>订阅营销邮件</b
+          ><el-switch
+            v-model="email_opt_in"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+            @change="change_email_opt_in"
+          ></el-switch>
         </p>
       </div>
     </el-dialog>
@@ -380,7 +400,7 @@ watch(
     overflow: auto;
   }
 
-  >div>div {
+  > div > div {
     border-radius: 5px;
     padding: 16px;
     border: 1px solid var(--el-border-color);
