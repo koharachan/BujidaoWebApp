@@ -27,6 +27,10 @@ async function initApp() {
 
   // 加载主题路由
   const routes = await themeStore.initTheme()
+  document.documentElement.classList.toggle(
+    'skin-kohara-fuwari',
+    themeStore.currentTheme === 'kohara-fuwari',
+  )
 
   // 动态添加路由
   routes.forEach((route) => {

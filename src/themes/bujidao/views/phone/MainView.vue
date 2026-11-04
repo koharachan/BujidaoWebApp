@@ -83,21 +83,22 @@ const bujidao = () => {
   top: 0px;
   width: 100vw;
   height: 54px;
-  padding: 4px 14px;
+  padding: 0 14px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  color: var(--el-text-color-placeholder);
+  color: var(--el-text-color-primary);
+  background-color: var(--el-bg-color, #fafafa);
+  z-index: 1;
+  box-shadow: 0 1px 0 var(--el-border-color-lighter, #eee);
 
   h1 {
-    font-size: 20px;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 600;
   }
-
-  background-color: rgba(250, 250, 250, 0.9);
-  z-index: 1;
-  box-shadow: 0px 1px 10px -6px var(--el-text-color-primary);
 
   align-items: center;
   justify-items: center;
@@ -106,25 +107,26 @@ const bujidao = () => {
     svg {
       height: 28px !important;
       width: 28px !important;
-      fill: var(--el-text-color-placeholder);
+      fill: var(--el-text-color-regular);
     }
   }
 
   .logout {
-    color: var(--el-text-color-placeholder);
-    padding: 2px 10px;
-    border: 1px var(--el-text-color-placeholder);
-    border-style: solid;
-    border-radius: 8%;
-    display: inline;
-    right: 0;
+    color: var(--el-text-color-regular);
+    padding: 4px 10px;
+    border: 1px solid var(--el-border-color);
+    border-radius: 6px;
+    line-height: 1.4;
+  }
+
+  .telegram,
+  .logout {
+    cursor: pointer;
   }
 }
 
 .active svg {
-  // background-color: #88888888;
-  border: 1px solid #88888888;
-  border-radius: 18%;
+  color: var(--el-color-primary);
   height: 22px !important;
   width: 22px !important;
 }
@@ -135,11 +137,12 @@ const bujidao = () => {
   width: 100vw;
   padding: 5px;
   display: grid;
-  background-color: rgba(256, 256, 256, 0.93);
+  background-color: var(--el-bg-color, #fff);
   z-index: 1;
   grid-template-rows: 1fr;
   color: var(--el-text-color-regular);
-  box-shadow: 0px 0px 10px -7px var(--el-text-color-regular);
+  box-shadow: 0 -1px 0 var(--el-border-color-lighter, #eee);
+  padding-bottom: max(5px, env(safe-area-inset-bottom));
 
   > div {
     display: flex;

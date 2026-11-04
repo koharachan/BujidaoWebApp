@@ -9,9 +9,13 @@ import ScreenSize from '@bujidao/components/ScreenSize.vue'
 import ThemeSwitcher from '@bujidao/components/ThemeSwitcher.vue'
 </script>
 <style lang="scss">
+.box {
+  background-color: var(--el-bg-color, #fff);
+}
+
 .dark {
   .box {
-    background-color: #2e303d !important;
+    background-color: var(--el-bg-color, #2e303d) !important;
   }
 
   .box.phone {

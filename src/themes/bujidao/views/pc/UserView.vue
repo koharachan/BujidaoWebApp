@@ -313,12 +313,12 @@ init()
 }
 
 .user-main > div {
-  flex: 1 1 auto;
+  flex: 1 1 280px;
   align-items: stretch;
   display: flex;
   flex-direction: column;
   overflow: auto;
-  min-width: 400px;
+  min-width: 0;
 }
 
 .user-main > div > div {

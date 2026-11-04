@@ -1,7 +1,11 @@
 import type { RouteRecordRaw, Router } from 'vue-router'
 import { useUserInfoStore } from '@/stores/userInfoStore'
 import { useScreenStore } from '@kohara-fuwari/stores/screenStore'
+import { initFuwariDocument } from '@kohara-fuwari/themeMode'
+import '@kohara-fuwari/assets/style/fuwari.scss'
 import phoneRouter from './phone_router'
+
+initFuwariDocument()
 import tabletRouter from './tablet_router'
 import desktopRouter from './desktop_router'
 export default function getRoutes(): RouteRecordRaw[] {

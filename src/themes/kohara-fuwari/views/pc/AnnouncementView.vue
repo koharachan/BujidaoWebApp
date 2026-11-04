@@ -70,7 +70,7 @@ const unpin_announcement_list = computed(() => {
   /* height: calc(100vh - 120px); */
   /* overflow: scroll; */
   :deep(*) {
-    line-height: 2.5;
+    line-height: 1.75;
   }
 }
 
