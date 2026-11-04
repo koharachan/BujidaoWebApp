@@ -1,0 +1,1278 @@
+/**
+ * kohara-fuwari skin.
+ * Visual system ported from saicaca/fuwari (MIT):
+ *   src/styles/variables.styl, src/styles/main.css,
+ *   Navbar.astro, MainGridLayout.astro, Profile / WidgetLayout / ButtonLink,
+ *   LightDarkSwitch.svelte, DisplaySettings.svelte.
+ * Default hue 250, page width 75rem, navbar 4.5rem, main panel offset 5.5rem,
+ * sidebar 17.5rem. Logo is the Bujidao favicon, not a new mark.
+ */
+
+@font-face {
+  font-family: 'Fuwari Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/roboto-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fuwari Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/roboto-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fuwari Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/roboto-700.woff2') format('woff2');
+}
+
+html.skin-kohara-fuwari {
+  --hue: 250;
+  --radius-large: 1rem;
+  --content-delay: 150ms;
+  --page-width: 75rem;
+
+  --primary: oklch(0.7 0.14 var(--hue));
+  --page-bg: oklch(0.95 0.01 var(--hue));
+  --card-bg: white;
+  --btn-content: oklch(0.55 0.12 var(--hue));
+  --btn-regular-bg: oklch(0.95 0.025 var(--hue));
+  --btn-regular-bg-hover: oklch(0.9 0.05 var(--hue));
+  --btn-regular-bg-active: oklch(0.85 0.08 var(--hue));
+  --btn-plain-bg-hover: oklch(0.95 0.025 var(--hue));
+  --btn-plain-bg-active: oklch(0.98 0.01 var(--hue));
+  --btn-card-bg-hover: oklch(0.98 0.005 var(--hue));
+  --btn-card-bg-active: oklch(0.9 0.03 var(--hue));
+  --deep-text: oklch(0.25 0.02 var(--hue));
+  --title-active: oklch(0.6 0.1 var(--hue));
+  --line-divider: rgba(0, 0, 0, 0.08);
+  --line-color: rgba(0, 0, 0, 0.1);
+  --meta-divider: rgba(0, 0, 0, 0.2);
+  --selection-bg: oklch(0.9 0.05 var(--hue));
+  --float-panel-bg: white;
+  --scrollbar-bg: rgba(0, 0, 0, 0.4);
+  --scrollbar-bg-hover: rgba(0, 0, 0, 0.5);
+  --scrollbar-bg-active: rgba(0, 0, 0, 0.6);
+  --color-selection-bar: linear-gradient(
+    to right,
+    oklch(0.8 0.1 0),
+    oklch(0.8 0.1 30),
+    oklch(0.8 0.1 60),
+    oklch(0.8 0.1 90),
+    oklch(0.8 0.1 120),
+    oklch(0.8 0.1 150),
+    oklch(0.8 0.1 180),
+    oklch(0.8 0.1 210),
+    oklch(0.8 0.1 240),
+    oklch(0.8 0.1 270),
+    oklch(0.8 0.1 300),
+    oklch(0.8 0.1 330),
+    oklch(0.8 0.1 360)
+  );
+
+  --el-color-primary: var(--primary);
+  --el-color-primary-light-3: var(--btn-regular-bg-hover);
+  --el-color-primary-light-5: var(--btn-regular-bg);
+  --el-color-primary-light-7: var(--btn-plain-bg-hover);
+  --el-color-primary-light-8: var(--btn-regular-bg);
+  --el-color-primary-light-9: var(--page-bg);
+  --el-color-primary-dark-2: var(--btn-content);
+  --el-border-radius-base: 8px;
+  --el-bg-color: var(--card-bg);
+  --el-bg-color-page: var(--page-bg);
+  --el-bg-color-overlay: var(--float-panel-bg);
+  --el-text-color-primary: var(--deep-text);
+  --el-text-color-regular: rgba(0, 0, 0, 0.75);
+  --el-border-color: var(--line-divider);
+  --el-border-color-light: var(--line-divider);
+  --el-border-color-lighter: var(--line-divider);
+  --el-fill-color-blank: var(--card-bg);
+  --el-fill-color-light: var(--btn-regular-bg);
+  --el-mask-color: rgba(255, 255, 255, 0.85);
+
+  color-scheme: light;
+  background: var(--page-bg);
+  color: #171717;
+  font-family:
+    'Fuwari Roboto',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    'PingFang SC',
+    'Hiragino Sans GB',
+    'Noto Sans SC',
+    'Microsoft YaHei',
+    sans-serif;
+  font-size: 16px;
+  text-size-adjust: 100%;
+}
+
+@media (max-width: 768px) {
+  html.skin-kohara-fuwari {
+    font-size: 14px;
+  }
+}
+
+html.skin-kohara-fuwari.dark {
+  --primary: oklch(0.75 0.14 var(--hue));
+  --page-bg: oklch(0.16 0.014 var(--hue));
+  --card-bg: oklch(0.23 0.015 var(--hue));
+  --btn-content: oklch(0.75 0.1 var(--hue));
+  --btn-regular-bg: oklch(0.33 0.035 var(--hue));
+  --btn-regular-bg-hover: oklch(0.38 0.04 var(--hue));
+  --btn-regular-bg-active: oklch(0.43 0.045 var(--hue));
+  --btn-plain-bg-hover: oklch(0.3 0.035 var(--hue));
+  --btn-plain-bg-active: oklch(0.27 0.025 var(--hue));
+  --btn-card-bg-hover: oklch(0.3 0.03 var(--hue));
+  --btn-card-bg-active: oklch(0.35 0.035 var(--hue));
+  --deep-text: oklch(0.92 0.01 var(--hue));
+  --title-active: oklch(0.75 0.1 var(--hue));
+  --line-divider: rgba(255, 255, 255, 0.08);
+  --line-color: rgba(255, 255, 255, 0.1);
+  --meta-divider: rgba(255, 255, 255, 0.2);
+  --selection-bg: oklch(0.4 0.08 var(--hue));
+  --float-panel-bg: oklch(0.19 0.015 var(--hue));
+  --scrollbar-bg: rgba(255, 255, 255, 0.4);
+  --scrollbar-bg-hover: rgba(255, 255, 255, 0.5);
+  --scrollbar-bg-active: rgba(255, 255, 255, 0.6);
+  --color-selection-bar: linear-gradient(
+    to right,
+    oklch(0.7 0.1 0),
+    oklch(0.7 0.1 30),
+    oklch(0.7 0.1 60),
+    oklch(0.7 0.1 90),
+    oklch(0.7 0.1 120),
+    oklch(0.7 0.1 150),
+    oklch(0.7 0.1 180),
+    oklch(0.7 0.1 210),
+    oklch(0.7 0.1 240),
+    oklch(0.7 0.1 270),
+    oklch(0.7 0.1 300),
+    oklch(0.7 0.1 330),
+    oklch(0.7 0.1 360)
+  );
+  --el-text-color-regular: rgba(255, 255, 255, 0.75);
+  --el-mask-color: rgba(0, 0, 0, 0.7);
+
+  color-scheme: dark;
+  color: #f5f5f5;
+}
+
+html.skin-kohara-fuwari body {
+  background: var(--page-bg);
+  color: inherit;
+  font-family: inherit;
+  transition:
+    background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.skin-kohara-fuwari ::selection {
+  background: var(--selection-bg);
+}
+
+/* ---------- components from main.css ---------- */
+html.skin-kohara-fuwari .card-base {
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  background: var(--card-bg);
+  transition:
+    color 150ms,
+    background-color 150ms,
+    border-color 150ms;
+}
+
+html.skin-kohara-fuwari .float-panel {
+  top: 5.25rem;
+  border-radius: var(--radius-large);
+  overflow: hidden;
+  background: var(--float-panel-bg);
+  transition:
+    color 150ms,
+    background-color 150ms,
+    border-color 150ms,
+    opacity 150ms,
+    transform 150ms;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+html.skin-kohara-fuwari.dark .float-panel {
+  box-shadow: none;
+}
+
+html.skin-kohara-fuwari .float-panel-closed {
+  transform: translateY(-0.25rem);
+  opacity: 0;
+  pointer-events: none;
+}
+
+html.skin-kohara-fuwari .btn-plain {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.75);
+  transition:
+    color 150ms,
+    background-color 150ms,
+    transform 150ms;
+  font: inherit;
+  text-decoration: none;
+}
+
+html.skin-kohara-fuwari.dark .btn-plain {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+html.skin-kohara-fuwari .btn-plain:hover {
+  color: var(--primary);
+}
+
+html.skin-kohara-fuwari .btn-plain:not(.scale-animation):hover {
+  background: var(--btn-plain-bg-hover);
+}
+
+html.skin-kohara-fuwari .btn-plain:not(.scale-animation):active {
+  background: var(--btn-plain-bg-active);
+}
+
+html.skin-kohara-fuwari .expand-animation {
+  position: relative;
+  z-index: 0;
+}
+
+html.skin-kohara-fuwari .expand-animation::before {
+  content: '';
+  position: absolute;
+  border-radius: inherit;
+  inset: 0;
+  transform: scale(0.85);
+  z-index: -1;
+  transition:
+    transform 150ms ease-out,
+    background-color 150ms ease-out;
+}
+
+html.skin-kohara-fuwari .expand-animation:hover::before {
+  background: var(--btn-plain-bg-hover);
+  transform: scale(1);
+}
+
+html.skin-kohara-fuwari .expand-animation:active::before {
+  background: var(--btn-plain-bg-active);
+}
+
+html.skin-kohara-fuwari .btn-plain.scale-animation.current-theme-btn {
+  color: var(--primary);
+}
+
+html.skin-kohara-fuwari .btn-plain.scale-animation.current-theme-btn::before {
+  transform: scale(1);
+  background: var(--btn-plain-bg-hover);
+}
+
+html.skin-kohara-fuwari .btn-regular {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--btn-regular-bg);
+  color: var(--btn-content);
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font: inherit;
+  transition:
+    color 150ms,
+    background-color 150ms,
+    transform 150ms;
+}
+
+html.skin-kohara-fuwari.dark .btn-regular {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+html.skin-kohara-fuwari .btn-regular:hover {
+  background: var(--btn-regular-bg-hover);
+}
+
+html.skin-kohara-fuwari .btn-regular:active {
+  background: var(--btn-regular-bg-active);
+}
+
+html.skin-kohara-fuwari .text-50 {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+html.skin-kohara-fuwari.dark .text-50 {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+html.skin-kohara-fuwari .pressable:active {
+  transform: scale(0.95);
+}
+
+/* ---------- navbar (Navbar.astro) ---------- */
+html.skin-kohara-fuwari #navbar {
+  position: relative;
+  z-index: 50;
+}
+
+html.skin-kohara-fuwari #navbar .navbar-top-mask {
+  position: absolute;
+  height: 2rem;
+  left: 0;
+  right: 0;
+  top: -2rem;
+  background: var(--card-bg);
+}
+
+html.skin-kohara-fuwari #navbar .navbar-bar {
+  height: 4.5rem;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  overflow: visible;
+}
+
+html.skin-kohara-fuwari #navbar .brand {
+  height: 3.25rem;
+  padding: 0 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  gap: 0.5rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+html.skin-kohara-fuwari #navbar .brand-mark {
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: contain;
+  display: block;
+}
+
+html.skin-kohara-fuwari #navbar .nav-links {
+  display: none;
+  align-items: center;
+  min-width: 0;
+}
+
+html.skin-kohara-fuwari #navbar .nav-links a {
+  height: 2.75rem;
+  padding: 0 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+html.skin-kohara-fuwari #navbar .nav-tools {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+html.skin-kohara-fuwari #navbar .icon-btn {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.5rem;
+}
+
+html.skin-kohara-fuwari #navbar .icon-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+html.skin-kohara-fuwari #navbar .scheme {
+  position: relative;
+  z-index: 50;
+}
+
+html.skin-kohara-fuwari #navbar .scheme-panel {
+  display: none;
+  position: absolute;
+  top: 2.75rem;
+  right: -0.5rem;
+  padding-top: 1.25rem;
+  z-index: 50;
+}
+
+html.skin-kohara-fuwari #navbar .scheme-panel .card-base {
+  padding: 0.5rem;
+}
+
+html.skin-kohara-fuwari #navbar .scheme-panel button {
+  width: 100%;
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  justify-content: flex-start;
+  white-space: nowrap;
+  margin-bottom: 0.125rem;
+  gap: 0.75rem;
+}
+
+html.skin-kohara-fuwari #navbar .scheme-panel button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+}
+
+html.skin-kohara-fuwari #nav-menu-panel {
+  position: fixed;
+  right: 1rem;
+  z-index: 50;
+  padding: 0.5rem;
+  min-width: 12rem;
+}
+
+html.skin-kohara-fuwari #nav-menu-panel a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.5rem 0.25rem 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+html.skin-kohara-fuwari.dark #nav-menu-panel a {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+html.skin-kohara-fuwari #nav-menu-panel a:hover {
+  background: var(--btn-plain-bg-hover);
+  color: var(--primary);
+}
+
+html.skin-kohara-fuwari #nav-menu-panel a svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--primary);
+}
+
+html.skin-kohara-fuwari #display-setting {
+  position: fixed;
+  right: 1rem;
+  z-index: 60;
+  width: 20rem;
+  padding: 1rem;
+}
+
+html.skin-kohara-fuwari #display-setting .hue-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+html.skin-kohara-fuwari #display-setting .hue-title {
+  position: relative;
+  margin-left: 0.75rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #171717;
+}
+
+html.skin-kohara-fuwari.dark #display-setting .hue-title {
+  color: #f5f5f5;
+}
+
+html.skin-kohara-fuwari #display-setting .hue-title::before {
+  content: '';
+  position: absolute;
+  width: 0.25rem;
+  height: 1rem;
+  border-radius: 0.375rem;
+  background: var(--primary);
+  left: -0.75rem;
+  top: 0.33rem;
+}
+
+html.skin-kohara-fuwari #display-setting .hue-reset {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.375rem;
+}
+
+html.skin-kohara-fuwari #display-setting .hue-reset.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+html.skin-kohara-fuwari #display-setting .hue-value {
+  width: 2.5rem;
+  height: 1.75rem;
+  border-radius: 0.375rem;
+  background: var(--btn-regular-bg);
+  color: var(--btn-content);
+  font-weight: 700;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html.skin-kohara-fuwari #display-setting .hue-track {
+  width: 100%;
+  height: 1.5rem;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+  background: oklch(0.8 0.1 0);
+}
+
+html.skin-kohara-fuwari.dark #display-setting .hue-track {
+  background: oklch(0.7 0.1 0);
+}
+
+html.skin-kohara-fuwari #colorSlider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 1.5rem;
+  background-image: var(--color-selection-bar);
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+html.skin-kohara-fuwari #colorSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 0.5rem;
+  border-radius: 0.125rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 0;
+}
+
+html.skin-kohara-fuwari #colorSlider::-moz-range-thumb {
+  height: 1rem;
+  width: 0.5rem;
+  border-radius: 0.125rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: 0;
+}
+
+@media (min-width: 1100px) {
+  html.skin-kohara-fuwari #navbar .nav-links {
+    display: flex;
+  }
+
+  html.skin-kohara-fuwari #navbar .nav-burger {
+    display: none;
+  }
+
+  html.skin-kohara-fuwari #navbar .scheme:hover .scheme-panel,
+  html.skin-kohara-fuwari #navbar .scheme:focus-within .scheme-panel {
+    display: block;
+  }
+}
+
+/* ---------- main grid (MainGridLayout, banner off) ---------- */
+html.skin-kohara-fuwari .fuwari-shell {
+  min-height: 100vh;
+}
+
+html.skin-kohara-fuwari .fuwari-top {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0;
+}
+
+html.skin-kohara-fuwari .fuwari-top-sticky {
+  position: relative;
+}
+
+html.skin-kohara-fuwari .fuwari-panel {
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+html.skin-kohara-fuwari .fuwari-panel-inner {
+  position: relative;
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+html.skin-kohara-fuwari #main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+  padding: 0;
+}
+
+html.skin-kohara-fuwari #sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+}
+
+html.skin-kohara-fuwari #swup-container {
+  min-width: 0;
+  outline: none;
+}
+
+html.skin-kohara-fuwari .profile-card {
+  padding: 0.75rem;
+}
+
+html.skin-kohara-fuwari .profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.25rem auto 0.75rem;
+  width: 100%;
+  max-width: 12rem;
+  aspect-ratio: 1;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: var(--btn-regular-bg);
+  text-decoration: none;
+}
+
+html.skin-kohara-fuwari .profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+html.skin-kohara-fuwari .profile-name {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  word-break: break-all;
+}
+
+html.skin-kohara-fuwari .profile-rule {
+  height: 0.25rem;
+  width: 1.25rem;
+  margin: 0 auto 0.5rem;
+  border-radius: 999px;
+  background: var(--primary);
+}
+
+html.skin-kohara-fuwari .profile-bio {
+  text-align: center;
+  color: #a3a3a3;
+  margin-bottom: 0.625rem;
+}
+
+html.skin-kohara-fuwari .profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
+
+html.skin-kohara-fuwari .profile-links a {
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  gap: 0.5rem;
+}
+
+html.skin-kohara-fuwari .widget-card {
+  padding-bottom: 0.5rem;
+}
+
+html.skin-kohara-fuwari .widget-title {
+  position: relative;
+  margin: 1rem 1rem 0.5rem 2rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #171717;
+}
+
+html.skin-kohara-fuwari.dark .widget-title {
+  color: #f5f5f5;
+}
+
+html.skin-kohara-fuwari .widget-title::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 0.34rem;
+  width: 0.25rem;
+  height: 1rem;
+  border-radius: 0.375rem;
+  background: var(--primary);
+}
+
+html.skin-kohara-fuwari .side-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+html.skin-kohara-fuwari .side-link span {
+  display: block;
+  width: 100%;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
+  background: none;
+  color: #404040;
+  text-align: left;
+  transition:
+    padding-left 150ms,
+    color 150ms,
+    background-color 150ms;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html.skin-kohara-fuwari.dark .side-link span {
+  color: #d4d4d4;
+}
+
+html.skin-kohara-fuwari .side-link:hover span,
+html.skin-kohara-fuwari .side-link.is-current span {
+  padding-left: 0.75rem;
+  background: var(--btn-plain-bg-hover);
+  color: var(--primary);
+}
+
+html.skin-kohara-fuwari .fuwari-footer {
+  margin: 2.5rem 2rem 3rem;
+  padding-top: 0;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+html.skin-kohara-fuwari.dark .fuwari-footer {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+html.skin-kohara-fuwari .fuwari-footer p {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+}
+
+html.skin-kohara-fuwari .fuwari-footer a {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  html.skin-kohara-fuwari .fuwari-top,
+  html.skin-kohara-fuwari #main-grid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  html.skin-kohara-fuwari .profile-avatar {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  html.skin-kohara-fuwari #main-grid {
+    grid-template-columns: 17.5rem minmax(0, 1fr);
+    grid-template-rows: auto;
+  }
+
+  html.skin-kohara-fuwari #sidebar {
+    max-width: 17.5rem;
+    position: sticky;
+    top: 5.5rem;
+    align-self: start;
+  }
+
+  html.skin-kohara-fuwari .fuwari-footer {
+    margin-left: 8rem;
+    margin-right: 8rem;
+  }
+}
+
+/* onload */
+@keyframes fuwari-fade-in-up {
+  from {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+html.skin-kohara-fuwari .onload-animation {
+  opacity: 0;
+  animation: fuwari-fade-in-up 300ms forwards;
+}
+
+html.skin-kohara-fuwari #navbar {
+  animation-delay: 0ms;
+}
+html.skin-kohara-fuwari #sidebar {
+  animation-delay: 100ms;
+}
+html.skin-kohara-fuwari #content-wrapper {
+  animation-delay: var(--content-delay);
+}
+html.skin-kohara-fuwari .fuwari-footer {
+  animation-delay: 250ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.skin-kohara-fuwari .onload-animation {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ---------- console pages sitting in the content column ---------- */
+html.skin-kohara-fuwari .box {
+  min-height: 0 !important;
+  background: var(--card-bg);
+  border-radius: var(--radius-large) !important;
+  border: 0 !important;
+  color: inherit;
+}
+
+html.skin-kohara-fuwari .box:has(.user-main) {
+  background: transparent;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+html.skin-kohara-fuwari .user-main,
+html.skin-kohara-fuwari .announcement-main {
+  position: relative !important;
+  top: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-width: 0;
+  gap: 1rem;
+}
+
+html.skin-kohara-fuwari .user-main {
+  align-items: stretch;
+}
+
+html.skin-kohara-fuwari .user-main > div,
+html.skin-kohara-fuwari .main-box,
+html.skin-kohara-fuwari .announcement,
+html.skin-kohara-fuwari .node-list,
+html.skin-kohara-fuwari .cc {
+  min-width: 0 !important;
+  background: var(--card-bg);
+  border-radius: var(--radius-large);
+  border: 0 !important;
+  padding: 1rem 1.15rem 1.25rem;
+}
+
+html.skin-kohara-fuwari .user-main > div > div,
+html.skin-kohara-fuwari .main-box > div {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent;
+  padding: 0;
+  min-width: 0;
+}
+
+html.skin-kohara-fuwari .user-main h2,
+html.skin-kohara-fuwari .user-main h3,
+html.skin-kohara-fuwari .main-box > h2,
+html.skin-kohara-fuwari .announcement-main h3 {
+  position: relative;
+  margin: 0 0 0.75rem 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: left;
+}
+
+html.skin-kohara-fuwari .user-main h2::before,
+html.skin-kohara-fuwari .user-main h3::before,
+html.skin-kohara-fuwari .main-box > h2::before,
+html.skin-kohara-fuwari .announcement-main h3::before {
+  content: '';
+  position: absolute;
+  left: -1rem;
+  top: 0.28rem;
+  width: 0.25rem;
+  height: 1rem;
+  border-radius: 0.375rem;
+  background: var(--primary);
+}
+
+html.skin-kohara-fuwari .node-list {
+  height: auto;
+  overflow: auto;
+}
+
+html.skin-kohara-fuwari .announcement-main {
+  line-height: 1.75;
+}
+
+html.skin-kohara-fuwari .no-wrap {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+html.skin-kohara-fuwari .el-button.is-round {
+  border-radius: 0.5rem;
+}
+
+html.skin-kohara-fuwari .el-button--primary {
+  --el-button-bg-color: var(--primary);
+  --el-button-border-color: var(--primary);
+  --el-button-hover-bg-color: var(--btn-content);
+  --el-button-hover-border-color: var(--btn-content);
+  --el-button-active-bg-color: var(--title-active);
+  --el-button-text-color: white;
+}
+
+html.skin-kohara-fuwari .el-table {
+  --el-table-bg-color: var(--card-bg);
+  --el-table-tr-bg-color: var(--card-bg);
+  --el-table-header-bg-color: var(--btn-regular-bg);
+  --el-table-border-color: var(--line-divider);
+  --el-table-text-color: inherit;
+  --el-table-header-text-color: inherit;
+  border-radius: 0.75rem;
+}
+
+html.skin-kohara-fuwari .el-dialog {
+  border-radius: var(--radius-large);
+  background: var(--card-bg);
+}
+
+html.skin-kohara-fuwari .el-input__wrapper,
+html.skin-kohara-fuwari .el-textarea__inner {
+  border-radius: 0.5rem;
+  background: var(--card-bg);
+  box-shadow: 0 0 0 1px var(--line-divider) inset;
+}
+
+html.skin-kohara-fuwari .el-tabs--card > .el-tabs__header {
+  border-bottom-color: var(--line-divider);
+}
+
+html.skin-kohara-fuwari .footer {
+  height: auto;
+  min-height: 0;
+}
+
+/* theme skin switcher, same card language */
+html.skin-kohara-fuwari .theme-switcher .theme-button {
+  background: var(--card-bg);
+  border: 0;
+  border-radius: 0.5rem;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.08),
+    0 4px 6px -4px rgba(0, 0, 0, 0.06);
+  color: var(--btn-content);
+}
+
+html.skin-kohara-fuwari .theme-switcher .theme-button:hover:not(.disabled) {
+  transform: none;
+  background: var(--btn-card-bg-hover);
+}
+
+html.skin-kohara-fuwari .theme-switcher .theme-label,
+html.skin-kohara-fuwari .theme-switcher .theme-icon {
+  color: var(--btn-content);
+  fill: var(--btn-content);
+}
+
+html.skin-kohara-fuwari .theme-switcher .theme-menu {
+  background: var(--float-panel-bg);
+  border: 0;
+  border-radius: var(--radius-large);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+html.skin-kohara-fuwari .theme-switcher .theme-menu-item {
+  color: inherit;
+}
+
+html.skin-kohara-fuwari .theme-switcher .theme-menu-item:hover {
+  background: var(--btn-plain-bg-hover);
+  color: var(--primary);
+}
+
+/* ---------- login: one Fuwari card, no glass / orbs ---------- */
+html.skin-kohara-fuwari .login-main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 3rem;
+  background: transparent;
+}
+
+html.skin-kohara-fuwari .login-container {
+  width: min(28rem, 100%);
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border-radius: var(--radius-large);
+  border: 0;
+  box-shadow: none;
+  overflow: hidden;
+  backdrop-filter: none;
+}
+
+html.skin-kohara-fuwari .info-section,
+html.skin-kohara-fuwari .login-section,
+html.skin-kohara-fuwari .login-content,
+html.skin-kohara-fuwari .info-content {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  width: auto;
+  min-height: 0;
+}
+
+html.skin-kohara-fuwari .info-section {
+  padding: 1.25rem 1.5rem 0;
+}
+
+html.skin-kohara-fuwari .login-section {
+  padding: 0.5rem 1.5rem 1.5rem;
+}
+
+html.skin-kohara-fuwari .logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+html.skin-kohara-fuwari .logo-section .brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+html.skin-kohara-fuwari .login-main .logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  object-fit: contain;
+  background: var(--btn-regular-bg);
+  padding: 0.25rem;
+}
+
+html.skin-kohara-fuwari .logo-text {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+html.skin-kohara-fuwari .welcome-title {
+  margin: 1rem 0 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+html.skin-kohara-fuwari .welcome-text,
+html.skin-kohara-fuwari .login-subtitle,
+html.skin-kohara-fuwari .copyright,
+html.skin-kohara-fuwari .form-hint {
+  color: #a3a3a3;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+html.skin-kohara-fuwari .welcome-text {
+  margin-top: 0.35rem;
+}
+
+html.skin-kohara-fuwari .copyright {
+  margin: 0.65rem 0 0.15rem;
+}
+
+html.skin-kohara-fuwari .login-title {
+  display: none;
+}
+
+html.skin-kohara-fuwari .login-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin: 1rem 0;
+  background: transparent;
+  padding: 0;
+}
+
+html.skin-kohara-fuwari .tab-button {
+  flex: 1;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+html.skin-kohara-fuwari.dark .tab-button {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+html.skin-kohara-fuwari .tab-button.tab-active,
+html.skin-kohara-fuwari .tab-button:hover {
+  background: var(--btn-plain-bg-hover);
+  color: var(--primary);
+}
+
+html.skin-kohara-fuwari .form-group {
+  margin-bottom: 0.9rem;
+}
+
+html.skin-kohara-fuwari .form-group:has(.checkbox-group) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+html.skin-kohara-fuwari .forgot-password {
+  color: var(--primary);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+html.skin-kohara-fuwari .third-party-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+html.skin-kohara-fuwari .third-party-buttons .el-button {
+  margin-left: 0;
+}
+
+html.skin-kohara-fuwari .third-party-buttons .el-button + .el-button {
+  margin-left: 0;
+}
+
+html.skin-kohara-fuwari .form-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+html.skin-kohara-fuwari .submit-button,
+html.skin-kohara-fuwari .third-party-button {
+  width: 100%;
+  height: 2.75rem;
+  border-radius: 0.5rem !important;
+  margin: 0 0 0.5rem;
+}
+
+html.skin-kohara-fuwari .third-party-button {
+  --el-button-bg-color: var(--btn-regular-bg);
+  --el-button-border-color: transparent;
+  --el-button-text-color: var(--btn-content);
+  --el-button-hover-bg-color: var(--btn-regular-bg-hover);
+  --el-button-hover-border-color: transparent;
+  --el-button-hover-text-color: var(--btn-content);
+  background: var(--btn-regular-bg) !important;
+  color: var(--btn-content) !important;
+  border-color: transparent !important;
+}
+
+html.skin-kohara-fuwari .divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+  color: #a3a3a3;
+  font-size: 0.75rem;
+}
+
+html.skin-kohara-fuwari .divider-line {
+  flex: 1;
+  height: 0;
+  border-top: 1px dashed var(--line-color);
+}
+
+html.skin-kohara-fuwari .checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+html.skin-kohara-fuwari .login-main .help {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 20;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.5rem;
+  background: var(--btn-regular-bg);
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+html.skin-kohara-fuwari .login-main .help:hover {
+  background: var(--btn-regular-bg-hover);
+  transform: none;
+}
+
+html.skin-kohara-fuwari .login-main .help svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+html.skin-kohara-fuwari .scheme-mini {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  flex: none;
+}

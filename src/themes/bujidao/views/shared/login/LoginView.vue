@@ -197,7 +197,13 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 280px;
+  width: min(420px, calc(100vw - 32px));
+  min-width: 0;
+  padding: 32px 28px 24px;
+  background: var(--el-bg-color, #fff);
+  border: 1px solid var(--el-border-color-lighter, #ebeef5);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .login-card > div {
@@ -209,6 +215,7 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 12px;
 
   :deep(> span) {
     gap: 0.2em;
@@ -218,6 +225,10 @@ h1 {
       height: 1.5em;
     }
   }
+}
+
+.login-card :deep(.el-button) {
+  width: 100%;
 }
 
 .logo {

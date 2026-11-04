@@ -70,7 +70,7 @@ const unpin_announcement_list = computed(() => {
   /* height: calc(100vh - 120px); */
   /* overflow: scroll; */
   :deep(*) {
-    line-height: 2.5;
+    line-height: 1.75;
   }
 }
 
@@ -78,9 +78,9 @@ const unpin_announcement_list = computed(() => {
   flex: 1 1 auto;
   margin: 2vh;
   // padding: 2vh;
-  border: 1px solid #ccc;
+  border: 1px solid var(--el-border-color, #dcdfe6);
   border-radius: 8px;
-  padding: 38px;
+  padding: 20px 22px;
 }
 
 .timeline {

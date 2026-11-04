@@ -70,7 +70,7 @@ const unpin_announcement_list = computed(() => {
   margin: 0 0 100px 0;
 
   :deep(*) {
-    line-height: 2;
+    line-height: 1.75;
   }
 }
 

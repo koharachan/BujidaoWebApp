@@ -1,6 +1,6 @@
-# bujidaotheme-koharachan
+# kohara-fuwari
 
-像小原 blog 3.2 一样的布吉岛 Web 应用主题。
+布吉岛 Web 应用主题。布局、色板和控件对齐 [saicaca/fuwari](https://github.com/saicaca/fuwari)（MIT，默认色相 250，无横幅时主栏从导航下展开）。需要标记的地方用站点已有的 `/favicon.ico`，不另画图标。
 
 ## 特性
 
